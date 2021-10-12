@@ -26,6 +26,12 @@ columns:
         searchable: true
         sortable: true
         type: partial
+    is_hide_message:
+        label: Hide message
+        searchable: true
+        sortable: true
+        type: switch
+        invisible: true
     category:
         label: Category
         searchable: true

@@ -1,0 +1,11 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+    is_hide_message:
+        label: 'ds.feedback::lang.feedback.message_list.filter.is_hide_message'
+        type: switch
+        conditions:
+            - is_hide_message <> true
+            - is_hide_message = true

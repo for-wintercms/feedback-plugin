@@ -24,4 +24,10 @@ class Messages extends Controller
         parent::__construct();
         BackendMenu::setContext('DS.Feedback', 'feedback_messages', 'feedback_messages');
     }
+
+    public function listExtendQuery($query)
+    {
+        $query->leftJoin('ds_feedback_status', 'ds_feedback_messages.status_id', '=', 'ds_feedback_status.id')
+            ->addSelect('ds_feedback_status.is_hide_message as is_hide_message');
+    }
 }
