@@ -1,0 +1,42 @@
+fields:
+    status:
+        label: Status
+        nameFrom: name
+        descriptionFrom: description
+        span: left
+        required: 0
+        type: relation
+    category:
+        label: Category
+        type: dropdown
+        span: right
+    subject:
+        label: Subject
+        type: dropdown
+        span: left
+    another_subject:
+        label: 'Subject text'
+        span: right
+        type: text
+        required: 1
+        trigger:
+            action: show
+            field: subject
+            condition: value[0]
+    email:
+        label: Email
+        span: left
+        required: 1
+        type: text
+    name:
+        label: Name
+        span: right
+        required: 1
+        type: text
+    message:
+        label: Message
+        size: huge
+        span: full
+        required: 1
+        hidden: 0
+        type: richeditor

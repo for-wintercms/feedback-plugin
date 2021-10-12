@@ -1,0 +1,12 @@
+title: FeedbackMessages
+modelClass: DS\Feedback\Models\FeedbackMessage
+list: $/ds/feedback/models/feedbackmessage/columns.yaml
+recordUrl: 'ds/feedback/messages/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
