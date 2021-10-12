@@ -8,7 +8,8 @@
         ],
         'message_list' => [
             'filter' => [
-                'is_hide_message' => 'Messages with closed status'
+                'is_hide_message' => 'Messages with closed status',
+                'status'          => 'Status',
             ],
         ],
     ],

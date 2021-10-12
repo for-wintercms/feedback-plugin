@@ -9,3 +9,9 @@ scopes:
         conditions:
             - is_hide_message <> true
             - is_hide_message = true
+    status_id:
+        label: 'ds.feedback::lang.feedback.message_list.filter.status'
+        type: group
+        modelClass: DS\Feedback\Models\FeedbackStatus
+        conditions: status_id in (:filtered)
+        nameFrom: name
