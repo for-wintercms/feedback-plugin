@@ -1,1 +1,3 @@
-<?= empty($record->subject_id) ? $record->another_subject : $value->name; ?>
+<div><?= empty($record->subject_id)
+    ? '<i class="icon-user-plus" style="color:#54ba42;"></i>&nbsp;&nbsp;'.$record->another_subject
+    : '<i class="icon-list-alt" style="color:#587ddc;"></i>&nbsp;&nbsp;'.$value->name; ?></div>
