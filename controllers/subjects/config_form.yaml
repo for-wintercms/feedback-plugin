@@ -1,0 +1,10 @@
+name: Subjects
+modelClass: DS\Feedback\Models\FeedbackSubject
+form: $/ds/feedback/models/feedbacksubject/fields.yaml
+defaultRedirect: ds/feedback/subjects
+create:
+    redirect: 'ds/feedback/subjects/update/:id'
+    redirectClose: ds/feedback/subjects
+update:
+    redirect: ds/feedback/subjects
+    redirectClose: ds/feedback/subjects
