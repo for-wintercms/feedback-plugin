@@ -1,0 +1,25 @@
+fields:
+    name:
+        label: Status
+        span: left
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        span: right
+        required: 1
+        preset:
+            field: name
+            type: slug
+        type: text
+    color:
+        label: Color
+        span: left
+        required: 1
+        type: colorpicker
+    is_hide_message:
+        label: Switch
+        span: right
+        default: 0
+        type: switch
+        comment: 'Hide messages by default'

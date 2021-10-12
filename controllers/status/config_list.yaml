@@ -1,0 +1,15 @@
+title: Status
+modelClass: DS\Feedback\Models\FeedbackStatus
+list: $/ds/feedback/models/feedbackstatus/columns.yaml
+recordUrl: 'ds/feedback/status/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+defaultSort:
+    column: sort_order
+    direction: desc
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

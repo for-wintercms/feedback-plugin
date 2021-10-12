@@ -1,0 +1,11 @@
+name: Status
+modelClass: DS\Feedback\Models\FeedbackStatus
+form: $/ds/feedback/models/feedbackstatus/fields.yaml
+defaultRedirect: ds/feedback/status
+create:
+    redirect: 'ds/feedback/status/update/:id'
+    redirectClose: ds/feedback/status
+update:
+    redirect: ds/feedback/status
+    redirectClose: ds/feedback/status
+preview: {  }

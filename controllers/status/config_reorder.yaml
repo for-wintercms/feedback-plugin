@@ -1,0 +1,5 @@
+title: Status
+modelClass: DS\Feedback\Models\FeedbackStatus
+nameFrom: name
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,42 @@
+columns:
+    id:
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
+        width: 60px
+    name:
+        label: Status
+        type: text
+        searchable: true
+        sortable: true
+    color:
+        label: Color
+        type: partial
+        path: color_field
+        width: 100px
+    is_hide_message:
+        label: 'Hide messages by default'
+        type: switch
+        sortable: true
+        width: 80px
+    slug:
+        label: Slug
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: Created
+        type: datetime
+        searchable: true
+        sortable: true
+    updated_at:
+        label: Updated
+        type: datetime
+        searchable: true
+        sortable: true
+    sort_order:
+        label: Sort
+        type: number
+        sortable: true
+        width: 60px
