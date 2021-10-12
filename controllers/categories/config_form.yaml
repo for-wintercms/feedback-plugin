@@ -1,0 +1,11 @@
+name: Categories
+modelClass: DS\Feedback\Models\FeedbackCategory
+form: $/ds/feedback/models/feedbackcategory/fields.yaml
+defaultRedirect: ds/feedback/categories
+create:
+    redirect: 'ds/feedback/categories/update/:id'
+    redirectClose: ds/feedback/categories
+update:
+    redirect: ds/feedback/categories
+    redirectClose: ds/feedback/categories
+preview: {  }
