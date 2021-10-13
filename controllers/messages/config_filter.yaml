@@ -33,3 +33,9 @@ scopes:
         conditions:
         - category_id <> 0
         - category_id = 0
+    is_custom_subject:
+        label: 'ds.feedback::lang.feedback.message_list.filter.is_custom_subject'
+        type: switch
+        conditions:
+        - subject_id <> 0
+        - subject_id = 0

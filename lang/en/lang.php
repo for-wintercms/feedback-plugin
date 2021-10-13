@@ -8,11 +8,12 @@
         ],
         'message_list' => [
             'filter' => [
-                'status'           => 'Status',
-                'subject'          => 'Subject',
-                'category'         => 'Category',
-                'is_hide_message'  => 'Messages with closed status',
-                'is_uncategorized' => 'Uncategorized',
+                'status'            => 'Status',
+                'subject'           => 'Subject',
+                'category'          => 'Category',
+                'is_hide_message'   => 'Messages with closed status',
+                'is_uncategorized'  => 'Uncategorized',
+                'is_custom_subject' => 'Custom subject',
             ],
             'columns' => [
                 'button' => 'Button',
