@@ -10,6 +10,7 @@
             'filter' => [
                 'is_hide_message' => 'Messages with closed status',
                 'status'          => 'Status',
+                'subject'         => 'Subject',
             ],
             'columns' => [
                 'button' => 'Button',
