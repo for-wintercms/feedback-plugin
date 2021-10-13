@@ -3,27 +3,33 @@
 # ===================================
 
 scopes:
-    is_hide_message:
-        label: 'ds.feedback::lang.feedback.message_list.filter.is_hide_message'
-        type: switch
-        conditions:
-            - is_hide_message <> true
-            - is_hide_message = true
-    status_id:
+    status:
         label: 'ds.feedback::lang.feedback.message_list.filter.status'
         type: group
         modelClass: DS\Feedback\Models\FeedbackStatus
         conditions: status_id in (:filtered)
         nameFrom: name
-    subject_id:
+    subject:
         label: 'ds.feedback::lang.feedback.message_list.filter.subject'
         type: group
         modelClass: DS\Feedback\Models\FeedbackSubject
         conditions: subject_id in (:filtered)
         nameFrom: name
-    category_id:
+    category:
         label: 'ds.feedback::lang.feedback.message_list.filter.category'
         type: group
         modelClass: DS\Feedback\Models\FeedbackCategory
         conditions: category_id in (:filtered)
         nameFrom: name
+    is_hide_message:
+        label: 'ds.feedback::lang.feedback.message_list.filter.is_hide_message'
+        type: switch
+        conditions:
+        - is_hide_message <> true
+        - is_hide_message = true
+    is_uncategorized:
+        label: 'ds.feedback::lang.feedback.message_list.filter.is_uncategorized'
+        type: switch
+        conditions:
+        - category_id <> 0
+        - category_id = 0
