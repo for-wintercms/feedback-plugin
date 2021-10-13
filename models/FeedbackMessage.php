@@ -2,7 +2,7 @@
 
 namespace DS\Feedback\Models;
 
-use Illuminate\Support\Facades\Lang;
+use Lang;
 use Model;
 
 /**

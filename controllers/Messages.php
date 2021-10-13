@@ -2,10 +2,10 @@
 
 namespace DS\Feedback\Controllers;
 
+use DB;
 use Lang;
 use BackendMenu;
 use Backend\Classes\Controller;
-use Illuminate\Support\Facades\DB;
 use DS\Feedback\Models\FeedbackStatus;
 
 class Messages extends Controller
@@ -30,8 +30,28 @@ class Messages extends Controller
 
     public function listExtendQuery($query)
     {
-        # filter - status
-        # ------------------
+        $this->queryFilterStatus($query);
+    }
+
+    public function listExtendColumns($list)
+    {
+        # Buttons
+        # ---------
+        $list->addColumns([
+            'buttons' => [
+                'list' => Lang::get('ds.feedback::feedback.message_list.columns.button'),
+                'type' => 'partial',
+                'width' => '100px',
+            ]
+        ]);
+    }
+
+    /**
+     * Query filter status
+     * @param $query
+     */
+    protected function queryFilterStatus($query)
+    {
         $messagesTable = $query->getQuery()->from;
         $statusTable   = (new FeedbackStatus())->getTable();
 
@@ -46,16 +66,5 @@ class Messages extends Controller
             if (isset($where['column']) && strripos($where['column'], '.') === false)
                 $where['column'] = $messagesTable.'.'.$where['column'];
         }
-    }
-
-    public function listExtendColumns($list)
-    {
-        $list->addColumns([
-            'buttons' => [
-                'list' => Lang::get('ds.feedback::feedback.message_list.columns.button'),
-                'type' => 'partial',
-                'width' => '100px',
-            ]
-        ]);
     }
 }
