@@ -21,3 +21,9 @@ scopes:
         modelClass: DS\Feedback\Models\FeedbackSubject
         conditions: subject_id in (:filtered)
         nameFrom: name
+    category_id:
+        label: 'ds.feedback::lang.feedback.message_list.filter.category'
+        type: group
+        modelClass: DS\Feedback\Models\FeedbackCategory
+        conditions: category_id in (:filtered)
+        nameFrom: name
