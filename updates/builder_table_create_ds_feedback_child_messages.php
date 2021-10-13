@@ -1,0 +1,29 @@
+<?php
+
+namespace DS\Feedback\Updates;
+
+use Schema;
+use October\Rain\Database\Updates\Migration;
+
+class BuilderTableCreateDsFeedbackChildMessages extends Migration
+{
+    public function up()
+    {
+        Schema::create('ds_feedback_child_messages', function($table)
+        {
+            $table->engine = 'InnoDB';
+            $table->increments('id')->unsigned();
+            $table->integer('parent_message_id');
+            $table->text('message', 5000);
+            $table->integer('manager_id')->nullable();
+            $table->timestamp('deleted_at')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('ds_feedback_child_messages');
+    }
+}
