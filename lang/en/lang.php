@@ -11,6 +11,9 @@
                 'is_hide_message' => 'Messages with closed status',
                 'status'          => 'Status',
             ],
+            'columns' => [
+                'button' => 'Button',
+            ],
         ],
     ],
 ];

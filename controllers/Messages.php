@@ -2,7 +2,7 @@
 
 namespace DS\Feedback\Controllers;
 
-use Backend\Classes\Controller;
+use Lang;
 use BackendMenu;
 use Backend\Classes\Controller;
 use Illuminate\Support\Facades\DB;
@@ -46,5 +46,16 @@ class Messages extends Controller
             if (isset($where['column']) && strripos($where['column'], '.') === false)
                 $where['column'] = $messagesTable.'.'.$where['column'];
         }
+    }
+
+    public function listExtendColumns($list)
+    {
+        $list->addColumns([
+            'buttons' => [
+                'list' => Lang::get('ds.feedback::feedback.message_list.columns.button'),
+                'type' => 'partial',
+                'width' => '100px',
+            ]
+        ]);
     }
 }

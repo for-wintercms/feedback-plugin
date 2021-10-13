@@ -1,0 +1,10 @@
+<div>
+    <button
+        type="button"
+        class="oc-icon-trash-o btn-icon danger"
+        data-request="onDelete"
+        data-request-data="checked[]: <?= $record->id ?>"
+        data-load-indicator="<?= e(trans('backend::lang.form.deleting')) ?>"
+        data-request-confirm="<?= e(trans('backend::lang.form.confirm_delete')) ?>">
+    </button>
+</div>
