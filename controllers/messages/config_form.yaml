@@ -3,8 +3,5 @@ modelClass: DS\Feedback\Models\FeedbackMessage
 form: $/ds/feedback/models/feedbackmessage/fields.yaml
 defaultRedirect: ds/feedback/messages
 create:
-    redirect: 'ds/feedback/messages/update/:id'
-    redirectClose: ds/feedback/messages
-update:
-    redirect: ds/feedback/messages
+    redirect: 'ds/feedback/messages'
     redirectClose: ds/feedback/messages

@@ -3,13 +3,21 @@
 namespace DS\Feedback\Controllers;
 
 use DB;
+use DS\Feedback\Models\FeedbackMessage;
 use Lang;
 use BackendMenu;
 use Backend\Classes\Controller;
 use DS\Feedback\Models\FeedbackStatus;
+use Winter\Storm\Exception\AjaxException;
+use Winter\Storm\Exception\ApplicationException;
 
 class Messages extends Controller
 {
+    protected $guarded = [
+        'update',
+        'preview',
+    ];
+
     public $implement = [
         'Backend\Behaviors\ListController',
         'Backend\Behaviors\FormController'
@@ -28,6 +36,30 @@ class Messages extends Controller
         BackendMenu::setContext('DS.Feedback', 'feedback_messages', 'feedback_messages');
     }
 
+    /* ======================================================== */
+
+    /**
+     * Controller "qna" action used for query and answer dialogue.
+     *
+     * @param int|null $recordId
+     */
+    public function qna($recordId = null)
+    {
+        if (empty($recordId) || ! is_numeric($recordId))
+            abort(404);
+
+        $this->vars['record'] = $record = FeedbackMessage::find($recordId);
+
+        try {
+            $this->pageTitle = $record->id;
+        }
+        catch (\Exception $ex) {
+            $this->handleError($ex);
+        }
+    }
+
+    /* ======================================================== */
+
     public function listExtendQuery($query)
     {
         $this->queryFilterStatus($query);
@@ -42,9 +74,17 @@ class Messages extends Controller
                 'list' => Lang::get('ds.feedback::feedback.message_list.columns.button'),
                 'type' => 'partial',
                 'width' => '100px',
+                'cssClass' => 'nolink',
             ]
         ]);
     }
+
+    public function formBeforeSave($model)
+    {
+        $this->guardedAction();
+    }
+
+    /* ======================================================== */
 
     /**
      * Query filter status
@@ -65,6 +105,24 @@ class Messages extends Controller
         {
             if (isset($where['column']) && strripos($where['column'], '.') === false)
                 $where['column'] = $messagesTable.'.'.$where['column'];
+        }
+    }
+
+    /**
+     * Guarded action
+     *
+     * @throws AjaxException
+     * @throws ApplicationException
+     */
+    protected function guardedAction()
+    {
+        if (in_array($this->action, $this->guarded))
+        {
+            $ajaxHandler = $this->getAjaxHandler();
+            if (empty($ajaxHandler))
+                throw new ApplicationException('Access is denied!');
+            else
+                throw new AjaxException('Access is denied!');
         }
     }
 }
