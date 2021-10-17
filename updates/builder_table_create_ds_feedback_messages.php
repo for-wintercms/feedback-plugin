@@ -21,6 +21,7 @@ class BuilderTableCreateDsFeedbackMessages extends Migration
             $table->integer('subject_id')->default(0);
             $table->string('another_subject', 128)->nullable();
             $table->integer('user_id')->nullable();
+            $table->integer('manager_id')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

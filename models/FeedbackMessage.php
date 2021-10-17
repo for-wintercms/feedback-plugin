@@ -4,6 +4,7 @@ namespace DS\Feedback\Models;
 
 use Lang;
 use Model;
+use Backend\Facades\BackendAuth;
 
 /**
  * FeedbackMessage Model
@@ -81,5 +82,7 @@ class FeedbackMessage extends Model
             $this->subject_id = 0;
         if (empty($this->user_id))
             $this->user_id = null;
+        if (BackendAuth::check())
+            $this->manager_id = BackendAuth::getUser()->id;
     }
 }
