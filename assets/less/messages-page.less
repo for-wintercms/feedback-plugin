@@ -41,11 +41,38 @@
         .fmi_logo > img {
             border-radius: 2px;
         }
+        .fmi_name {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .fmi_datetime {
+            margin-left: 10px;
+            font-size: 0.9em;
+            color: #0b3f5a;
+        }
     }
     &right .feedback-message-info {
         border-bottom: 1px solid #51abf5;
     }
     &text {
-        padding-top: 10px;
+        padding-top: 15px;
+    }
+}
+
+@media screen and (max-width: 1140px) {
+    .feedback-message-block {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .feedback-message-block {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .feedback-message-block {
+        width: 96%;
     }
 }
