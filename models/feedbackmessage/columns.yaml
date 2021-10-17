@@ -5,22 +5,21 @@ columns:
         searchable: true
         sortable: true
         width: 60px
-    email:
-        label: Email
-        type: text
-        searchable: true
-        sortable: true
     name:
         label: Name
         type: text
         searchable: true
         sortable: true
-    user_id:
-        label: User ID
-        type: partial
+    subject:
+        label: Subject
         searchable: true
         sortable: true
-        width: 60px
+        type: partial
+    category:
+        label: Category
+        searchable: true
+        sortable: true
+        type: partial
     status:
         label: Status
         searchable: true
@@ -32,16 +31,6 @@ columns:
         sortable: true
         type: switch
         invisible: true
-    category:
-        label: Category
-        searchable: true
-        sortable: true
-        type: partial
-    subject:
-        label: Subject
-        searchable: true
-        sortable: true
-        type: partial
     created_at:
         label: Created
         type: datetime
