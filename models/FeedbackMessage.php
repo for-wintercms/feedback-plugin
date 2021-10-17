@@ -37,6 +37,10 @@ class FeedbackMessage extends Model
         'category' => [FeedbackCategory::class, 'key' => 'category_id'],
     ];
 
+    public $hasMany = [
+        'child_messages' => [FeedbackChildMessage::class, 'key' => 'parent_message_id'],
+    ];
+
     public function getCategoryOptions($keyValue = null)
     {
         return FeedbackCategory::pluck('name', 'id')->prepend(Lang::get('ds.feedback::lang.feedback.category.uncategorized'), 0);

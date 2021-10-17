@@ -1,1 +1,69 @@
-<div><?= $record->message ?></div>
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('ds/feedback/messages') ?>">FeedbackMessages</a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <div class="layout-row feedback-messages">
+
+        <div class="feedback-message-left">
+            <div class="feedback-message-block">
+                <div class="feedback-message-info">
+                    <div class="fmi_logo"><img src="https://www.gravatar.com/avatar/<?= md5(strtolower(trim($record->email))) ?>?s=40" /></div>
+                    <div class="fmi_name"><?= e($record->name) ?></div>
+                    <div class="fmi_datetime"><?= e($record->updated_at) ?></div>
+                </div>
+                <div class="feedback-message-text">
+                    <?= Html::clean($record->message) ?>
+                </div>
+            </div>
+        </div>
+        <?php
+        $userEmail = $record->email;
+        foreach ($record->child_messages as $child_message)
+        {
+            if ($child_message->manager)
+            {
+                $cssChatPosition = 'right';
+                $avatarUrl = $child_message->manager->avatar
+                                ? $child_message->manager->getAvatarThumb(40, ['mode' => 'crop', 'extension' => 'png'])
+                                : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($child_message->manager->email))).'?d=mp&s=40';
+                $userName  = $child_message->manager->first_name.' '.$child_message->manager->last_name;
+            }
+            else
+            {
+                $cssChatPosition = 'left';
+                $avatarUrl = 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($userEmail))).'?s=40';
+                $userName  = $record->name;
+            }
+
+            ?>
+            <div class="feedback-message-<?= $cssChatPosition ?>">
+                <div class="feedback-message-block">
+                    <div class="feedback-message-info">
+                        <div class="fmi_logo"><img src="<?= $avatarUrl ?>" /></div>
+                        <div class="fmi_name"><?= e($userName) ?></div>
+                        <div class="fmi_datetime"><?= e($record->updated_at) ?></div>
+                    </div>
+                    <div class="feedback-message-text">
+                        <?= Html::clean($child_message->message) ?>
+                    </div>
+                </div>
+            </div>
+            <?php
+        } ?>
+    </div>
+
+    <div class="form-buttons">
+        <div class="loading-indicator-container">
+            <a href="<?= Backend::url('ds/feedback/messages') ?>" class="btn btn-primary"><?= e(trans('backend::lang.form.return_to_list')) ?></a>
+        </div>
+    </div>
+
+<?php else: ?>
+    <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
+    <p><a href="<?= Backend::url('ds/feedback/messages') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')) ?></a></p>
+<?php endif ?>

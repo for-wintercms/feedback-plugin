@@ -3,6 +3,7 @@
 namespace DS\Feedback\Models;
 
 use Model;
+use Backend\Models\User as BackendUser;
 
 /**
  * Model
@@ -23,5 +24,9 @@ class FeedbackChildMessage extends Model
      * @var array Validation rules
      */
     public $rules = [
+    ];
+
+    public $belongsTo = [
+        'manager' => [BackendUser::class, 'key' => 'manager_id'],
     ];
 }

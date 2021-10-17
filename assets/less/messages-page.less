@@ -1,0 +1,51 @@
+.feedback-messages {
+    padding: 20px 0 40px;
+}
+.feedback-message- {
+    &left,
+    &right {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    &left + &right,
+    &right + &left {
+        margin-top: 1em;
+    }
+    &left + &left,
+    &right + &right {
+        margin-top: .5em;
+    }
+    &block {
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #85c5fb;
+        background-color: #d7ecfd;
+        width: 70%;
+    }
+    &right {
+        justify-content: flex-end;
+
+        .feedback-message-block {
+            background-color: #92cbfb;
+        }
+    }
+    &info {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #a1d1f9;
+
+        > div {
+            display: inline-block;
+        }
+        .fmi_logo > img {
+            border-radius: 2px;
+        }
+    }
+    &right .feedback-message-info {
+        border-bottom: 1px solid #51abf5;
+    }
+    &text {
+        padding-top: 10px;
+    }
+}

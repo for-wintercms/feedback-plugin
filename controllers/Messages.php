@@ -3,16 +3,20 @@
 namespace DS\Feedback\Controllers;
 
 use DB;
-use DS\Feedback\Models\FeedbackMessage;
 use Lang;
 use BackendMenu;
 use Backend\Classes\Controller;
+
 use DS\Feedback\Models\FeedbackStatus;
+use DS\Feedback\Models\FeedbackMessage;
+
 use Winter\Storm\Exception\AjaxException;
 use Winter\Storm\Exception\ApplicationException;
 
 class Messages extends Controller
 {
+    public $assetPath = 'plugins/ds/feedback/assets';
+
     protected $guarded = [
         'update',
         'preview',
@@ -48,10 +52,11 @@ class Messages extends Controller
         if (empty($recordId) || ! is_numeric($recordId))
             abort(404);
 
-        $this->vars['record'] = $record = FeedbackMessage::find($recordId);
-
         try {
-            $this->pageTitle = $record->id;
+            $this->addCss(['less/messages-page.less'], 'DS.Feedback');
+
+            $this->vars['record'] = $record = FeedbackMessage::find($recordId);
+            $this->pageTitle = $record->subject->name ?? $record->another_subject;
         }
         catch (\Exception $ex) {
             $this->handleError($ex);
