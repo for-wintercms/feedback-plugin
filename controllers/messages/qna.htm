@@ -1,7 +1,7 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
         <li><a href="<?= Backend::url('ds/feedback/messages') ?>">FeedbackMessages</a></li>
-        <li><?= e($this->pageTitle) ?></li>
+        <li><strong><?= e($this->pageTitle) ?></strong>&nbsp;&nbsp;&nbsp;[<i><?= $record->category ? e($record->category->name) : '-' ?></i>]</li>
     </ul>
 <?php Block::endPut() ?>
 
