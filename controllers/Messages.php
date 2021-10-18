@@ -66,6 +66,10 @@ class Messages extends Controller
         }
     }
 
+    /**
+     * AJAX - Change message status
+     * @return array
+     */
     public function onMessageStatusChange()
     {
         try {

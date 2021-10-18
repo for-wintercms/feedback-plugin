@@ -7,12 +7,12 @@
 
 <?php if (!$this->fatalError): ?>
 
-    <div class="layout-row">
-        <form id="feedbackStatus" class="form-elements" role="form"
-              data-request="onMessageStatusChange"
-              data-request-data="message_id: <?= $record->id ?>"
-              data-request-loading
-              data-request-flash>
+    <form id="feedbackStatus" class="form-elements" role="form"
+          data-request="onMessageStatusChange"
+          data-request-data="message_id: <?= $record->id ?>"
+          data-request-loading
+          data-request-flash>
+        <div class="layout-row">
             <div class="form-group span-left">
                 <label>Status:</label>
                 <div class="feedback-current-status">
@@ -26,9 +26,9 @@
                     ?>
                 </select>
             </div>
-        </form>
-        <script>$('select').on('change', function(){ $('#feedbackStatus').submit(); });</script>
-    </div>
+        </div>
+    </form>
+    <script>$('select').on('change', function(){ $('#feedbackStatus').submit(); });</script>
 
     <div class="layout-row feedback-messages">
 
