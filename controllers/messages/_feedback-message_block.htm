@@ -1,0 +1,8 @@
+<div class="feedback-message-<?= $childMessage->manager ? 'right' : 'left' ?>">
+    <div class="feedback-message-block">
+        <?= $this->makePartial('feedback-message_info', ['message' => $message, 'childMessage' => $childMessage]) ?>
+        <div class="feedback-message-text">
+            <?= Html::clean($childMessage->message) ?>
+        </div>
+    </div>
+</div>

@@ -20,10 +20,19 @@ class FeedbackChildMessage extends Model
      */
     public $table = 'ds_feedback_child_messages';
 
+    protected $fillable = [
+        'message',
+        'parent_message_id',
+        'manager_id',
+    ];
+
     /**
      * @var array Validation rules
      */
     public $rules = [
+        'message'           => 'required|between:1,5000',
+        'parent_message_id' => 'required|exists:ds_feedback_messages,id',
+        'manager_id'        => 'exists:backend_users,id',
     ];
 
     public $belongsTo = [
