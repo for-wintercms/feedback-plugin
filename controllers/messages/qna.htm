@@ -7,6 +7,29 @@
 
 <?php if (!$this->fatalError): ?>
 
+    <div class="layout-row">
+        <form id="feedbackStatus" class="form-elements" role="form"
+              data-request="onMessageStatusChange"
+              data-request-data="message_id: <?= $record->id ?>"
+              data-request-loading
+              data-request-flash>
+            <div class="form-group span-left">
+                <label>Status:</label>
+                <div class="feedback-current-status">
+                    <?= $this->makePartial('feedback-message_status', ['statusName' => $record->status->name, 'statusColor' => $record->status->color]) ?>
+                </div>
+                <select name="message_status" class="form-control custom-select" onselect="alert('pj')">
+                    <?php
+                    $selectedStatusId = $record->status->id;
+                    foreach ($statusList as $statusId => $statusName)
+                        echo '<option '. ($selectedStatusId == $statusId ? 'selected="selected" ' : '') .'value="'. e($statusId) .'">'. e($statusName) .'</option>';
+                    ?>
+                </select>
+            </div>
+        </form>
+        <script>$('select').on('change', function(){ $('#feedbackStatus').submit(); });</script>
+    </div>
+
     <div class="layout-row feedback-messages">
 
         <div class="feedback-message-left">

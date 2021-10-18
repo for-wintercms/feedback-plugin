@@ -4,6 +4,7 @@ namespace DS\Feedback\Controllers;
 
 use DB;
 use Lang;
+use Flash;
 use BackendMenu;
 use Backend\Classes\Controller;
 
@@ -49,17 +50,53 @@ class Messages extends Controller
      */
     public function qna($recordId = null)
     {
-        if (empty($recordId) || ! is_numeric($recordId))
+        $recordId = ctype_digit($recordId) ? (int)$recordId : 0;
+        if ($recordId <= 0)
             abort(404);
 
         try {
             $this->addCss(['less/messages-page.less'], 'DS.Feedback');
 
             $this->vars['record'] = $record = FeedbackMessage::find($recordId);
+            $this->vars['statusList'] = FeedbackStatus::pluck('name', 'id');
             $this->pageTitle = $record->subject->name ?? $record->another_subject;
         }
         catch (\Exception $ex) {
             $this->handleError($ex);
+        }
+    }
+
+    public function onMessageStatusChange()
+    {
+        try {
+            $messageId = post('message_id');
+            $messageId = ctype_digit($messageId) ? (int)$messageId : 0;
+            $messageStatusId = post('message_status');
+            $messageStatusId = ctype_digit($messageStatusId) ? (int)$messageStatusId : 0;
+
+            if ($messageId <= 0 || $messageStatusId <= 0)
+                throw new AjaxException('Error!');
+
+            $record         = FeedbackMessage::find($messageId);
+            $feedbackStatus = FeedbackStatus::find($messageStatusId);
+
+            if (! $record || ! $feedbackStatus)
+                throw new AjaxException('Status not found!');
+
+            $record->status_id = $messageStatusId;
+            $record->save();
+
+            Flash::success('Success!');
+
+            return [
+                '.feedback-current-status' => $this->makePartial('feedback-message_status', ['statusName' => $feedbackStatus->name, 'statusColor' => $feedbackStatus->color])
+            ];
+        }
+        catch (\Exception $ex) {
+            $this->handleError($ex);
+            Flash::error($this->getFatalError());
+
+            return [];
         }
     }
 
