@@ -1,5 +1,6 @@
 <?php
 $objMsg = $childMessage ?: $message;
+$messageUpdatedAt = (! empty($objMsg->updated_at) && $objMsg->created_at != $objMsg->updated_at) ? $objMsg->updated_at : null;
 
 if (! $childMessage || ! $childMessage->manager)
 {
@@ -17,5 +18,5 @@ else
 <div class="feedback-message-info">
     <div class="fmi_logo"><img src="<?= $avatarUrl ?>" /></div>
     <div class="fmi_name"><?= e($userName) ?></div>
-    <div class="fmi_datetime"><?= e($objMsg->created_at).($objMsg->created_at != $objMsg->updated_at ? '&nbsp;&nbsp;&nbsp;<i class="icon-pencil">('.e($objMsg->updated_at).')</i>' : '') ?></div>
+    <div class="fmi_datetime"><?= e($objMsg->created_at).($messageUpdatedAt ? '&nbsp;&nbsp;&nbsp;<i class="icon-pencil">('.e($messageUpdatedAt).')</i>' : '') ?></div>
 </div>
