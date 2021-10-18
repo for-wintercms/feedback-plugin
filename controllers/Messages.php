@@ -79,13 +79,13 @@ class Messages extends Controller
             $messageStatusId = ctype_digit($messageStatusId) ? (int)$messageStatusId : 0;
 
             if ($messageId <= 0 || $messageStatusId <= 0)
-                throw new AjaxException('Error!');
+                throw new ApplicationException('Error!');
 
             $record         = FeedbackMessage::find($messageId);
             $feedbackStatus = FeedbackStatus::find($messageStatusId);
 
             if (! $record || ! $feedbackStatus)
-                throw new AjaxException('Status not found!');
+                throw new ApplicationException('Status not found!');
 
             $record->status_id = $messageStatusId;
             $record->save();
