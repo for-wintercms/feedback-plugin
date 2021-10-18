@@ -24,4 +24,11 @@ class Plugin extends PluginBase
             'icon'        => 'icon-commenting'
         ];
     }
+
+    public function registerMailTemplates()
+    {
+        return [
+            'ds.feedback::mail.feedback-message'
+        ];
+    }
 }

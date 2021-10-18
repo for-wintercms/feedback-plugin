@@ -3,13 +3,13 @@
 namespace DS\Feedback\Controllers;
 
 use DB;
+use Mail;
 use Lang;
 use Html;
 use Flash;
 use BackendMenu;
 use Backend\Classes\FormField;
 use Backend\Classes\Controller;
-use Backend\Facades\BackendAuth;
 use Backend\FormWidgets\RichEditor;
 
 use DS\Feedback\Models\FeedbackStatus;
@@ -134,6 +134,12 @@ class Messages extends Controller
                 'message'           => $messageHtml,
                 'manager_id'        => $this->user->id
             ]);
+
+            Mail::send('ds.feedback::mail.feedback-message', ['name' => $record->name, 'messageHtml' => $messageHtml], function($message) use ($record)
+            {
+                $message->to(e($record->email), e($record->name));
+                $message->subject(e($record->subject->name ?? $record->another_subject));
+            });
 
             Flash::success('Success!');
 
