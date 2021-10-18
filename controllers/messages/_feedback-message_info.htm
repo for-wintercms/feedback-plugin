@@ -1,0 +1,21 @@
+<?php
+$objMsg = $childMessage ?: $message;
+
+if (! $childMessage || ! $childMessage->manager)
+{
+    $avatarUrl = 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($message->email))).'?s=40';
+    $userName  = $message->name;
+}
+else
+{
+    $avatarUrl = $childMessage->manager->avatar
+        ? $childMessage->manager->getAvatarThumb(40, ['mode' => 'crop', 'extension' => 'png'])
+        : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($childMessage->manager->email))).'?d=mp&s=40';
+    $userName = $childMessage->manager->first_name.' '.$childMessage->manager->last_name;
+}
+?>
+<div class="feedback-message-info">
+    <div class="fmi_logo"><img src="<?= $avatarUrl ?>" /></div>
+    <div class="fmi_name"><?= e($userName) ?></div>
+    <div class="fmi_datetime"><?= e($objMsg->created_at).($objMsg->created_at != $objMsg->updated_at ? '&nbsp;&nbsp;&nbsp;<i class="icon-pencil">('.e($objMsg->updated_at).')</i>' : '') ?></div>
+</div>
