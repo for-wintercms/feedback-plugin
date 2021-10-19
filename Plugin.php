@@ -4,6 +4,7 @@ namespace DS\Feedback;
 
 use Backend;
 use System\Classes\PluginBase;
+use DS\Feedback\Components\FeedbackForm;
 
 /**
  * Feedback Plugin Information File
@@ -96,6 +97,13 @@ class Plugin extends PluginBase
     {
         return [
             'ds.feedback::mail.feedback-message'
+        ];
+    }
+
+    public function registerComponents()
+    {
+        return [
+            FeedbackForm::class => 'feedbackForm'
         ];
     }
 }

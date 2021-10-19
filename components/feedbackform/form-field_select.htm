@@ -1,0 +1,9 @@
+{% set fieldId = __SELF__.formFieldId() %}
+<div class="form-group">
+    <label for="{{ fieldId }}">{{ label }}</label>
+    <select id="{{ fieldId }}" name="{{ name }}" class="form-control select {{ class }}" data-toggle="select">
+    {% for key, option in options %}
+        <option value="{{ key }}" {{ selected and selected == key ? 'selected' : '' }}>{{ option }}</option>
+    {% endfor %}
+    </select>
+</div>

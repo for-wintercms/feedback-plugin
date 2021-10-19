@@ -1,0 +1,5 @@
+{% set fieldId = __SELF__.formFieldId() %}
+<label class="checkbox {{ class }}" for="{{ fieldId }}">
+    <input type="checkbox" name="{{ name }}" value="{{ value }}" id="{{ fieldId }}" data-toggle="checkbox">
+    {{ label }}
+</label>
