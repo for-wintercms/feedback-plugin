@@ -1,14 +1,27 @@
-fields:
-    name:
-        label: 'Category'
-        span: left
-        required: 1
-        type: text
-    slug:
-        label: Slug
-        span: right
-        required: 1
-        preset:
-            field: name
-            type: slug
-        type: text
+tabs:
+    fields:
+        name:
+            label: Category
+            span: left
+            required: 1
+            type: text
+            tab: Form
+        slug:
+            label: Slug
+            span: right
+            required: 1
+            preset:
+                field: name
+                type: slug
+            type: text
+            tab: Form
+        is_allow_user_subject:
+            label: 'Allow user subject'
+            span: left
+            type: switch
+            default: true
+            tab: Form
+        subjects:
+            span: full
+            type: partial
+            tab: Subjects

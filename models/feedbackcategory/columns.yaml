@@ -15,6 +15,14 @@ columns:
         type: text
         searchable: true
         sortable: true
+    is_allow_user_subject:
+        label: 'Allow user subject'
+        type: switch
+    subjects_count:
+        label: Subjects
+        relation: subjects_count
+        valueFrom: count
+        default: 0
     created_at:
         label: Created
         type: datetime

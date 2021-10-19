@@ -2,6 +2,7 @@
     - 'First version of Feedback'
     - builder_table_create_ds_feedback_subjects.php
     - builder_table_create_ds_feedback_categories.php
+    - builder_table_create_ds_feedback_category_subject.php
     - builder_table_create_ds_feedback_messages.php
     - builder_table_create_ds_feedback_status.php
     - builder_table_create_ds_feedback_child_messages.php

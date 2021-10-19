@@ -15,6 +15,7 @@ class BuilderTableCreateDsFeedbackCategories extends Migration
             $table->increments('id')->unsigned();
             $table->string('slug', 128)->unique();
             $table->string('name', 128);
+            $table->boolean('is_allow_user_subject');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

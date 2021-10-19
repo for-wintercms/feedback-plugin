@@ -1,0 +1,12 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+subjects:
+    label: Subjects
+    view:
+        list: $/ds/feedback/models/feedbacksubject/columns.yaml
+        toolbarButtons: add|remove
+    manage:
+        list: $/ds/feedback/models/feedbacksubject/columns.yaml
+        recordsPerPage: 10
