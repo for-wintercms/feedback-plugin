@@ -1,5 +1,5 @@
 {% set fieldId = __SELF__.formFieldId() %}
 <div class="form-group">
-    <label for="{{ fieldId }}">{{ label }}</label>
+    {% if label %}<label for="{{ fieldId }}">{{ label }}</label>{% endif %}
     <input type="text" name="{{ name }}" class="form-control {{ class }}" id="{{ fieldId }}" placeholder="{{ placeholder }}">
 </div>

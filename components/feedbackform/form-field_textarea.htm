@@ -1,5 +1,5 @@
 {% set fieldId = __SELF__.formFieldId() %}
 <div class="form-group">
-    <label for="{{ fieldId }}">{{ label }}</label>
+    {% if label %}<label for="{{ fieldId }}">{{ label }}</label>{% endif %}
     <textarea name="{{ name }}" class="form-control {{ class }}" rows="{{ rows }}" id="{{ fieldId }}" placeholder="{{ placeholder }}" style="resize: none"></textarea>
 </div>
