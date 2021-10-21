@@ -1,1 +1,29 @@
-{% partial __SELF__~'::form-field_select' name="subject" label=label class=class options=__SELF__.getSubjects() %}
+{% set subjectList = __SELF__.getSubjects() %}
+
+{% partial __SELF__~'::form-field_select' name="subject" label=label class=class~' feedback_subject-list' options=subjectList %}
+
+{% if subjectList|keys|first == 0 %}
+    {% partial 'feedbackForm::form-field_text' name="user_subject" label="" placeholder=label class="feedback_user-subject" %}
+    {% put scripts %}
+    <script type="text/javascript">
+    (function($) {
+        "use strict";
+        $(document).ready(function($)
+        {
+            let userSubjectField = $('.feedback_user-subject');
+            let subjectListField = $('select.feedback_subject-list');
+
+            function toggleUserSubjectField()
+            {
+                if (subjectListField.val() === '0')
+                    userSubjectField.val("").parent().show();
+                else
+                    userSubjectField.val("").parent().hide();
+            }
+            toggleUserSubjectField();
+            subjectListField.change(function(){ toggleUserSubjectField(); });
+        });
+    })(jQuery);
+    </script>
+    {% endput %}
+{% endif %}
