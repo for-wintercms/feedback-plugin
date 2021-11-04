@@ -22,7 +22,7 @@
                     <?php
                     $selectedStatusId = $record->status->id;
                     foreach ($statusList as $statusId => $statusName)
-                        echo '<option '. ($selectedStatusId == $statusId ? 'selected="selected" ' : '') .'value="'. e($statusId) .'">'. e($statusName) .'</option>';
+                        echo '<option '. ($selectedStatusId == $statusId ? 'selected="selected" ' : '') .'value="'. e($statusId) .'">'. e($statusName) .'</option>'.PHP_EOL;
                     ?>
                 </select>
             </div>
@@ -46,24 +46,24 @@
         ?>
     </div>
 
-    <?= Form::open(['class' => 'layout']) ?>
+    <?= Form::open() ?>
 
         <div class="layout-row feedback-new-message">
             <label>Message</label>
             <?= $this->widget->messageRichEditor->render() ?>
-        </div>
 
-        <div class="form-buttons feedback-new-message-btn">
-            <div class="loading-indicator-container">
-                <button
-                    type="button"
-                    data-request="onSendMessage"
-                    data-request-data="message_id: <?= $record->id ?>"
-                    data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
-                    class="btn btn-success pull-right">
-                    Send message
-                </button>
+            <div class="form-buttons feedback-new-message-btn">
+                <div class="loading-indicator-container">
+                    <button
+                        type="button"
+                        data-request="onSendMessage"
+                        data-request-data="message_id: <?= $record->id ?>"
+                        data-hotkey="ctrl+enter, cmd+enter"
+                        data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
+                        class="btn btn-success pull-right">
+                        Send message
+                    </button>
+                </div>
             </div>
         </div>
 
