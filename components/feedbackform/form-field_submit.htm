@@ -1,2 +1,1 @@
-{% set fieldId = __SELF__.formFieldId() %}
-<button type="submit" class="btn {{ class }}" data-request="{{ __SELF__~'::onSubmit' }}">{{ value }}</button>
+<button type="submit" class="btn {{ class }}" data-request="{{ __SELF__~'::onSubmit' }}" data-attach-loading>{{ value }}</button>
