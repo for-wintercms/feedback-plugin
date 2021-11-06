@@ -25,6 +25,11 @@ columns:
         type: text
         searchable: true
         sortable: true
+    is_default_status:
+        label: 'Default status'
+        type: partial
+        path: default_status_column
+        width: 80px
     created_at:
         label: Created
         type: datetime

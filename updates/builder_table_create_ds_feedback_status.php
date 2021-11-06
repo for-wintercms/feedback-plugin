@@ -17,6 +17,7 @@ class BuilderTableCreateDsFeedbackStatus extends Migration
             $table->string('name', 128);
             $table->string('color', 7);
             $table->boolean('is_hide_message')->default(0);
+            $table->boolean('is_default_status')->default(0);
             $table->integer('sort_order')->default(0);
             $table->timestamp('deleted_at')->nullable();
             $table->timestamp('created_at')->nullable();

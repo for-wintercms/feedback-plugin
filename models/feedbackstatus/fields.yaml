@@ -12,14 +12,20 @@ fields:
             field: name
             type: slug
         type: text
-    color:
-        label: Color
+    is_default_status:
+        label: Switch
         span: left
-        required: 1
-        type: colorpicker
+        default: 0
+        type: switch
+        comment: 'Default status when sending messages'
     is_hide_message:
         label: Switch
         span: right
         default: 0
         type: switch
         comment: 'Hide messages by default'
+    color:
+        label: Color
+        span: left
+        required: 1
+        type: colorpicker
