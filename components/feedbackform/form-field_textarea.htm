@@ -2,4 +2,5 @@
 <div class="form-group">
     {% if label %}<label for="{{ fieldId }}">{{ label }}</label>{% endif %}
     <textarea name="{{ name }}" class="form-control {{ class }}" rows="{{ rows }}" id="{{ fieldId }}" placeholder="{{ placeholder }}" style="resize: none"></textarea>
+    <span class="form-field-error" data-validate-for="{{ name }}">{{ error }}</span>
 </div>

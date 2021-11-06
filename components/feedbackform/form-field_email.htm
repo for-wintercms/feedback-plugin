@@ -2,4 +2,5 @@
 <div class="form-group">
     {% if label %}<label for="{{ fieldId }}">{{ label }}</label>{% endif %}
     <input type="email" name="{{ name }}" class="form-control {{ class }}" id="{{ fieldId }}" placeholder="{{ placeholder }}">
+    <span class="form-field-error" data-validate-for="{{ name }}">{{ error }}</span>
 </div>

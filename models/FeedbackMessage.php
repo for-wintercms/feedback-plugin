@@ -31,6 +31,16 @@ class FeedbackMessage extends Model
         'status_id' => 'required|exists:ds_feedback_status,id',
     ];
 
+    protected $fillable = [
+        'email',
+        'name',
+        'message',
+        'status_id',
+        'category_id',
+        'subject_id',
+        'another_subject',
+    ];
+
     public $belongsTo = [
         'status'   => [FeedbackStatus::class, 'key' => 'status_id'],
         'subject'  => [FeedbackSubject::class, 'key' => 'subject_id'],

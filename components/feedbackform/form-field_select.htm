@@ -6,4 +6,5 @@
         <option value="{{ key }}" {{ selected and selected == key ? 'selected' : '' }}>{{ option }}</option>
     {% endfor %}
     </select>
+    <span class="form-field-error" data-validate-for="{{ name }}">{{ error }}</span>
 </div>
