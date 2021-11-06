@@ -1,1 +1,4 @@
-<div style="color: <?= $value->color ?>"><i class="icon-flag"></i>&nbsp;&nbsp;<?= $value->name ?></div>
+<?php
+if (isset($value->color))
+    echo '<div style="color: '. $value->color .'"><i class="icon-flag"></i>&nbsp;&nbsp;'. $value->name .'</div>';
+?>

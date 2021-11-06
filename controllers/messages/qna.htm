@@ -16,11 +16,17 @@
             <div class="form-group span-left">
                 <label>Status:</label>
                 <div class="feedback-current-status">
-                    <?= $this->makePartial('feedback-message_status', ['statusName' => $record->status->name, 'statusColor' => $record->status->color]) ?>
+                    <?= $this->makePartial('feedback-message_status', ['statusName' => $record->status->name ?? '-', 'statusColor' => $record->status->color ?? '-']) ?>
                 </div>
                 <select name="message_status" class="form-control custom-select" onselect="alert('pj')">
                     <?php
-                    $selectedStatusId = $record->status->id;
+                    if ($record->status)
+                        $selectedStatusId = $record->status->id;
+                    else
+                    {
+                        $selectedStatusId = 0;
+                        echo '<option selected="selected" value="0">---</option>'.PHP_EOL;
+                    }
                     foreach ($statusList as $statusId => $statusName)
                         echo '<option '. ($selectedStatusId == $statusId ? 'selected="selected" ' : '') .'value="'. e($statusId) .'">'. e($statusName) .'</option>'.PHP_EOL;
                     ?>
