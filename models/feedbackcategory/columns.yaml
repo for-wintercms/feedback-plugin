@@ -18,6 +18,9 @@ columns:
     is_allow_user_subject:
         label: 'Allow user subject'
         type: switch
+    user_subject_select:
+        label: 'User subject (in select list)'
+        type: text
     subjects_count:
         label: Subjects
         relation: subjects_count

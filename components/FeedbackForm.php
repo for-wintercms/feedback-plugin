@@ -95,7 +95,7 @@ class FeedbackForm extends ComponentBase
 
         $subjects = $feedbackCategory->subjects->pluck('name', 'slug');
         if ($feedbackCategory->is_allow_user_subject)
-            $subjects->prepend(Lang::get('ds.feedback::lang.feedback.subject.custom_subject'), 0);
+            $subjects->prepend($feedbackCategory->user_subject_select, 0);
 
         return $subjects->toArray();
     }

@@ -21,6 +21,15 @@ tabs:
             type: switch
             default: true
             tab: Form
+        user_subject_select:
+            label: User subject (in select list)
+            span: left
+            type: text
+            trigger:
+                action: show
+                field: is_allow_user_subject
+                condition: checked
+            tab: Form
         subjects:
             span: full
             type: partial
